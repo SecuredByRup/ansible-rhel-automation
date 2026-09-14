@@ -20,7 +20,7 @@ This module demonstrates the design, deployment, and verification of Ansible Pla
 ├── vars.yml
 └── verify-setup.yml
 ```
-### 1. Host Inventory (`inventory.ini`)
+### Host Inventory (`inventory.ini`)
 ```ini
 [managed_nodes]
 node1 ansible_host=192.168.1.10 ansible_user=ansible
