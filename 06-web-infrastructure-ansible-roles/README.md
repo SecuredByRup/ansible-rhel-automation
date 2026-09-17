@@ -29,7 +29,7 @@ This project transitions standard procedural playbooks into a modular, role-base
 ```
 
 ## Directory Structure
-Plaintext
+```Plaintext
 
 ansible-lab9/
 ├── group_vars/
@@ -54,43 +54,51 @@ ansible-lab9/
 ├── site.yml                   # Multi-role orchestrator playbook
 ├── validate-deployment.yml    # Post-deployment assertion test suite
 └── README.md                  # Project documentation
+```
+### Key Features
 
-Key Features
+**Modular Role Architecture:** Complete separation of tasks, default variables, handlers, and templates for optimal reuse.
 
-    Modular Role Architecture: Complete separation of tasks, default variables, handlers, and templates for optimal reuse.
+**Jinja2 Dynamic Rendering:** Custom virtual host files and dynamic index dashboards rendering real-time system facts.
 
-    Jinja2 Dynamic Rendering: Custom virtual host files and dynamic index dashboards rendering real-time system facts.
+**Automated Quality Assurance:** Dedicated validation suite executing service state, HTTP 200, and file existence assertions.
 
-    Automated Quality Assurance: Dedicated validation suite executing service state, HTTP 200, and file existence assertions.
+**Idempotent State Management:** Safe re-execution across environment instances with zero side-effects (changed=0).
 
-    Idempotent State Management: Safe re-execution across environment instances with zero side-effects (changed=0).
+### Deployment & Verification Commands
 
-Deployment & Verification Commands
 1. Execute Multi-Role Orchestrator
-Bash
+```Bash
 
 ansible-playbook -i inventory.ini site.yml -K
+```
 
 2. Run Automated Quality Assurance
-Bash
+```Bash
 
 ansible-playbook -i inventory.ini validate-deployment.yml
+```
 
 3. Verify HTTP Endpoint Response
-Bash
+```Bash
 
 curl -s http://localhost
+```
 
-Verification Proof & Evidence
-1. Multi-Role Playbook Execution
+### Verification Proof & Evidence
+
+**1. Multi-Role Playbook Execution**
 
 Figure 1: site.yml executing the common and apache-webserver roles sequentially with zero failures (failed=0).
-2. Automated Assertion Validation
+
+**2. Automated Assertion Validation**
 
 Figure 2: validate-deployment.yml passing all 6 system assertions, including HTTP status 200 and index creation.
-3. Dynamic HTTP Endpoint Response
+
+**3. Dynamic HTTP Endpoint Response**
 
 Figure 3: HTML payload rendered via Jinja2 displaying host information, IP address, and OS facts.
-4. Role Structure Layout
+
+**4. Role Structure Layout**
 
 Figure 4: Full structural tree of the common and apache-webserver roles.
