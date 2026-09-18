@@ -64,7 +64,7 @@ ansible-lab8/
 * **Ansible Core:** 2.11 or higher
 * **Python Dependencies:** PyMySQL (required for community.mysql module operations)
 
-### Verify Inventory Configuration
+## Verify Inventory Configuration
 
 Configure your host definitions inside `inventory.ini`:
 
@@ -97,40 +97,33 @@ During the development of this playbook, several system-level and syntax issues 
 **Issue:** Default RHEL/CentOS packages mysql-server and php-mysql failed to install.
 **Solution:** Updated tasks to target mariadb-server and php-mysqlnd to align with CentOS Stream 9 package repositories.
 
-    MariaDB Local Authentication Errors
+* **MariaDB Local Authentication Errors**
+**Issue:** mysql_user and mysql_db tasks threw Access denied for user 'root'@'localhost' errors.
+**Solution:** Explicitly defined login_unix_socket: /var/lib/mysql/mysql.sock across all MySQL tasks to authenticate directly via the local Unix domain socket.
 
-        Issue: mysql_user and mysql_db tasks threw Access denied for user 'root'@'localhost' errors.
+* **Duplicate Document Markers (---) in Roles**
+**Issue:** Playbook execution failed with Syntax Error while loading YAML: but found another document in role files.
+**Solution:** Cleaned roles/*/tasks/main.yml and roles/*/defaults/main.yml files, ensuring only a single --- marker exists at the very top of each file.
 
-        Solution: Explicitly defined login_unix_socket: /var/lib/mysql/mysql.sock across all MySQL tasks to authenticate directly via the local Unix domain socket.
+* **Global Variable Scope Across Web and DB Tiers**
+**Issue:** The webapp role failed with AnsibleUndefinedVariable: 'mysql_database' is undefined.
+**Solution:** Moved common database credentials into group_vars/all.yml and explicitly passed them into the webapp play scope within complete-deployment.yml.
 
-    Duplicate Document Markers (---) in Roles
+* **Systemd Service Unit Registration**
+**Issue:** Apache installation threw Could not find the requested service httpd.
+**Solution:** Added a systemd module task with daemon_reload: yes immediately following package installation to force systemd to index new unit files before managing the service state.
 
-        Issue: Playbook execution failed with Syntax Error while loading YAML: but found another document in role files.
-
-        Solution: Cleaned roles/*/tasks/main.yml and roles/*/defaults/main.yml files, ensuring only a single --- marker exists at the very top of each file.
-
-    Global Variable Scope Across Web and DB Tiers
-
-        Issue: The webapp role failed with AnsibleUndefinedVariable: 'mysql_database' is undefined.
-
-        Solution: Moved common database credentials into group_vars/all.yml and explicitly passed them into the webapp play scope within complete-deployment.yml.
-
-    Systemd Service Unit Registration
-
-        Issue: Apache installation threw Could not find the requested service httpd.
-
-        Solution: Added a systemd module task with daemon_reload: yes immediately following package installation to force systemd to index new unit files before managing the service state.
-
-Verification & Testing
+## Verification & Testing
 
 Verify that the LAMP stack is up and operational:
-Bash
+```bash
 
-# Check HTTP service status
+#Check HTTP service status
 systemctl status httpd
 
-# Verify Database status
+#Verify Database status
 systemctl status mariadb
 
-# Test web endpoint execution
+#Test web endpoint execution
 curl -I http://localhost/index.php
+```
