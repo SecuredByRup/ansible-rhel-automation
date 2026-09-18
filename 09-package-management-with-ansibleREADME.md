@@ -1,4 +1,4 @@
-# Module 8: Package Management Across Distributions
+# Module 9: Package Management Across Distributions
 
 This repository contains Ansible playbooks and inventory configurations designed to automate enterprise package management, cross-distribution service deployments, block/rescue error handling, and automated metric reporting across Enterprise Linux (CentOS/RHEL) environments.
 
