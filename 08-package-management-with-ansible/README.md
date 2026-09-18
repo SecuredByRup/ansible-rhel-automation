@@ -20,11 +20,11 @@ ansible-lab11/
 
 ## Setup & Environment Details
 
-    Target OS: CentOS / RHEL (Single Node execution via ansible_connection=local)
+* Target OS: CentOS / RHEL (Single Node execution via ansible_connection=local)
 
-    Control Node: Localhost (127.0.0.1)
+* Control Node: Localhost (127.0.0.1)
 
-    Ansible Connection: Connection plugin set to local with become privileges.
+* Ansible Connection: Connection plugin set to local with become privileges.
 
 ## How to Run the Playbooks
 
@@ -46,9 +46,9 @@ ansible-playbook -i inventory/hosts playbooks/package-reporting.yml -K
 ```
 ## Generated Artifacts & Verification
 
-Web Server Verification: `curl -s http://127.0.0.1`
+* Web Server Verification: `curl -s http://127.0.0.1`
 
-Package Backups & Summaries: `/tmp/package_backup/`
+* Package Backups & Summaries: `/tmp/package_backup/`
 
-System Report Dashboard: `/tmp/ansible_reports/localhost_package_report.txt`
+* System Report Dashboard: `/tmp/ansible_reports/localhost_package_report.txt`
     
