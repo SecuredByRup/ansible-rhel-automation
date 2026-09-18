@@ -8,11 +8,11 @@ This lab demonstrates essential file management techniques in Ansible. It covers
 
 ### 🛠️ Prerequisites & Setup
 
-Control / Target Node: CentOS 9 Stream / RHEL 9 (Executing via localhost)
+* Control / Target Node: CentOS 9 Stream / RHEL 9 (Executing via localhost)
 
-Ansible Core: v2.14+ installed
+* Ansible Core: v2.14+ installed
 
-Required Package: httpd (Apache Web Server)
+* Required Package: httpd (Apache Web Server)
 
 ### Local Workspace Setup
 ```Bash
@@ -86,8 +86,8 @@ ls -la /opt/app/config/ /opt/app/static/
 
 ### 🎯 Key Concepts Mastered
 
-Ansible Idempotence: Understanding the difference between state modifications (changed) and pre-validated configuration states (ok).
+* Ansible Idempotence: Understanding the difference between state modifications (changed) and pre-validated configuration states (ok).
 
-Jinja2 Templating Engine: Variable substitution, default filters (default()), conditional statements ({% if %}), and loop structures ({% for %}).
+* Jinja2 Templating Engine: Variable substitution, default filters (default()), conditional statements ({% if %}), and loop structures ({% for %}).
 
-File Attributes & Security: Defining explicit file modes (0644, 0755), ownership properties (owner, group), and creating system backups (backup: yes).
+* File Attributes & Security: Defining explicit file modes (0644, 0755), ownership properties (owner, group), and creating system backups (backup: yes).
