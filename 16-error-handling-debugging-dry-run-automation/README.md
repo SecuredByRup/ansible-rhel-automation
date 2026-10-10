@@ -37,22 +37,22 @@ lab19-error-handling/
 
 ### 1. Advanced Debugging & Verbosity Output
 Verified variable types, loop iteration items, and verbosity logging using `ansible-playbook -i inventory advanced-debug.yml -v`.
-![Advanced Debug Verbosity](assets/01_advanced_debug_verbosity.png)  
+![Advanced Debug Verbosity](images/01_advanced_debug_verbosity.png)  
 *Proof: Detailed output verifying variable structures and loop execution.*
 
 ### 2. Check Mode Simulation (`--check`)
 Evaluated system state impact safely without applying changes using `ansible-playbook -i inventory check-mode-aware.yml --check`.
-![Check Mode Dry Run](assets/02_check_mode_dry_run.png)  
+![Check Mode Dry Run](images/02_check_mode_dry_run.png)  
 *Proof: Successful evaluation in check mode without altering actual target state.*
 
 ### 3. Non-Zero Exit Code Interception (`ignore_errors`)
 Intercepted command failures (`rc=1`, `rc=2`) and continued playbook execution (`ignored=2`).
-![Ignore Errors Handling](assets/03_ignore_errors_handling.png)  
+![Ignore Errors Handling](images/03_ignore_errors_handling.png)  
 *Proof: Graceful handling of task failure using `ignore_errors: yes`.*
 
 ### 4. Structural Exception Recovery (`block` / `rescue` / `always`)
 Caught task execution failures in the primary block, triggering the rescue task and mandatory cleanup step (`rescued=1`).
-![Block Rescue Always](assets/04_block_rescue_always.png)  
+![Block Rescue Always](images/04_block_rescue_always.png)  
 *Proof: Resilient exception recovery and guaranteed cleanup execution.*
 
 ---
