@@ -48,7 +48,7 @@ Installs `mysql-server`, installs the `pymysql` Python driver via pip, starts/en
 ```bash
 ansible-playbook -i inventory.ini playbooks/mysql-setup.yml --ask-become-pass
 ```
-![MySQL Setup Execution](assets/01-mysql-setup-execution.png)  
+![MySQL Setup Execution](images/01-mysql-setup-execution.png)  
 *Proof: Successful execution of `mysql-setup.yml` with `failed=0`.*
 
 ---
@@ -58,7 +58,7 @@ Installs `postgresql-server`, initializes the database cluster, starts/enables `
 ```bash
 ansible-playbook -i inventory.ini playbooks/postgresql-setup.yml --ask-become-pass
 ```
-![PostgreSQL Setup Execution](assets/02-postgresql-setup-execution.png)  
+![PostgreSQL Setup Execution](images/02-postgresql-setup-execution.png)  
 *Proof: Successful execution of `postgresql-setup.yml` with `failed=0`.*
 
 ---
@@ -70,14 +70,14 @@ Executes modular role-based deployments for each database engine dynamically.
 ```bash
 ansible-playbook -i inventory.ini playbooks/role-mysql.yml --ask-become-pass
 ```
-![MySQL Role Execution](assets/03-role-mysql-execution.png)  
+![MySQL Role Execution](images/03-role-mysql-execution.png)  
 *Proof: Executing `role-mysql.yml` using the reusable `database-management` role.*
 
 **PostgreSQL Role Execution:**
 ```bash
 ansible-playbook -i inventory.ini playbooks/role-postgresql.yml --ask-become-pass
 ```
-![PostgreSQL Role Execution](assets/04-role-postgresql-execution.png)  
+![PostgreSQL Role Execution](images/04-role-postgresql-execution.png)  
 *Proof: Executing `role-postgresql.yml` using the reusable `database-management` role.*
 
 ---
@@ -88,5 +88,5 @@ Verifies active system state for both database services and inspects directory l
 systemctl is-active mysqld postgresql
 ls -la playbooks/
 ```
-![Service and Filesystem Audit](assets/05-service-and-filesystem-audit.png)  
+![Service and Filesystem Audit](images/05-service-and-filesystem-audit.png)  
 *Proof: Active systemd service status check (`mysqld` and `postgresql`) and directory listing.*
