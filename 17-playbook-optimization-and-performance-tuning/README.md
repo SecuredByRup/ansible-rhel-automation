@@ -40,7 +40,7 @@ lab20/
 ```
 
 ### Project & Role Structure Verification
-![Role Hierarchy Tree](assets/01_role_hierarchy_tree.png)  
+![Role Hierarchy Tree](images/01_role_hierarchy_tree.png)  
 *Proof: Output of `tree roles/ -L 2` showing all 5 created role directories and subdirectories [cite: 49].*
 
 ---
@@ -57,7 +57,7 @@ Execution times were measured on a single-node AWS EC2 instance (`172.31.10.80`)
 
 > **Note on Async Benchmarking**: Standard `--check` mode cannot spawn active background processes. The benchmark script executes `async-optimization.yml` live without `--check` to properly evaluate job IDs (`ansible_job_id`) [cite: 49].
 
-![Benchmark and Performance Results](assets/02_benchmark_and_performance.png)  
+![Benchmark and Performance Results](images/02_benchmark_and_performance.png)  
 *Proof: Successful execution of `ansible-playbook analyze-performance.yml` and `./benchmark-playbooks.sh` [cite: 49].*
 
 ---
