@@ -104,17 +104,17 @@ systemctl is-active mariadb httpd haproxy
 
 ### 1. Master Playbook Completion (`site.yml`)
 The orchestration playbook completes all phases cleanly with `failed=0`.
-![Master Playbook Recap](assets/01-master-playbook-recap.png)  
+![Master Playbook Recap](images/01-master-playbook-recap.png)  
 *Proof: Ansible Playbook Recap completed cleanly with `ok=34`, `changed=0`, and `failed=0`.*
 
 ### 2. End-to-End HTTP Request Verification
 Querying the load balancer endpoint on port 80 successfully returns the rendered PHP application response sourced from Apache and connected to MariaDB.
-![Services and Routing](assets/02-services-and-routing.png)  
+![Services and Routing](images/02-services-and-routing.png)  
 *Proof: All three services (`mariadb`, `httpd`, `haproxy`) are active, and the `curl http://127.0.0.1/webapp/` test successfully routed through HAProxy on port 80.*
 
 ### 3. HAProxy Administrative Dashboard
 HAProxy metrics dashboard accessible on port 8404 showing active backend health.
-![HAProxy Dashboard](assets/03-haproxy-dashboard.png)  
+![HAProxy Dashboard](images/03-haproxy-dashboard.png)  
 *Proof: The stats dashboard at `http://127.0.0.1:8404/stats` shows green `UP` status across the `webapp_frontend` and `webapp_servers` backends.*
 
 ---
