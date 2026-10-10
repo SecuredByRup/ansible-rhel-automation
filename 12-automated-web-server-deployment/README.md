@@ -72,25 +72,25 @@ ansible-playbook -i inventory/hosts.ini site.yml --ask-become-pass
 ## Execution Proofs & Verification
 
 ### 1. Project Setup & Ping Test
-![Project Setup and Ping](assets/01-project-setup-and-ping.png)  
+![Project Setup and Ping](images/01-project-setup-and-ping.png)  
 *Proof: Shows project initialization, directory creation, inventory setup, and successful Ansible ping test.*
 
 ### 2. Apache Installation Playbook Execution
-![Apache Installation Playbook](assets/02-apache-installation-playbook.png)  
+![Apache Installation Playbook](images/02-apache-installation-playbook.png)  
 *Proof: Successful execution of `install-apache.yml` with `failed=0`.*
 
 ### 3. Website Deployment Playbook Execution
-![Website Deployment Playbook](assets/03-website-deployment-playbook.png)  
+![Website Deployment Playbook](images/03-website-deployment-playbook.png)  
 *Proof: Successful execution of `deploy-website.yml` deploying Jinja2 templates, static CSS, and verifying HTTP response.*
 
 ### 4. Firewall Configuration Playbook Execution
-![Firewall Configuration Playbook](assets/04-firewall-configuration-playbook.png)  
+![Firewall Configuration Playbook](images/04-firewall-configuration-playbook.png)  
 *Proof: Execution of `configure-firewall.yml` configuring `firewalld` to allow HTTP/HTTPS traffic.*
 
 ### 5. Master Playbook Execution
-![Master Playbook Execution](assets/05-master-playbook-execution.png)  
+![Master Playbook Execution](images/05-master-playbook-execution.png)  
 *Proof: End-to-end master playbook (`site.yml`) execution.*
 
 ### 6. HTTP Verification via cURL
-![HTTP Verification cURL](assets/06-http-verification-curl.png)  
+![HTTP Verification cURL](images/06-http-verification-curl.png)  
 *Proof: Local HTTP validation using `curl -I http://localhost` returning `HTTP/1.1 200 OK` and rendered Jinja2 HTML output.*
