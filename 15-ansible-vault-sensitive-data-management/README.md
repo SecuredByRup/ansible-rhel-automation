@@ -49,15 +49,15 @@ This repository demonstrates enterprise-grade secrets management using **Ansible
 
 ### 1. Vault File Encryption Audit
 Verified encryption status across all YAML variable files in the workspace:
-![Vault File Status](assets/01_vault_file_status.png)  
+![Vault File Status](images/01_vault_file_status.png)  
 *Verification: Executing `./manage_vault.sh status` successfully identifies encrypted vs. plaintext files [cite: 37].*
 
 ### 2. Ciphertext Inspection vs. Decrypted View
 Demonstrated raw AES-256 encrypted ciphertext stored on disk (`cat`) alongside dynamic in-memory viewing via Ansible Vault (`ansible-vault view`):
-![Raw Encrypted Secrets](assets/02_raw_encrypted_secrets.png)  
+![Raw Encrypted Secrets](images/02_raw_encrypted_secrets.png)  
 *Verification: Raw on-disk ciphertext displayed as AES-256 binary structure [cite: 38].*
 
-![Playbook Vault Execution](assets/03_playbook_vault_execution.png)  
+![Playbook Vault Execution](images/03_playbook_vault_execution.png)  
 *Verification: In-memory decrypted view and successful playbook execution [cite: 39].*
 
 ### 3. Secure Automated Execution
@@ -68,12 +68,12 @@ ansible-playbook -i inventory/hosts playbooks/environment_deployment.yml   -e "t
 
 ### 4. Verified Rendered Configurations
 Confirmed that Jinja2 templates correctly extracted decrypted vault secrets into secure system configuration files:
-![Deployed Configurations](assets/04_deployed_configurations.png)  
+![Deployed Configurations](images/04_deployed_configurations.png)  
 *Verification: Successfully inspected generated configuration files via `sudo cat /tmp/*_config.conf` [cite: 40].*
 
 ### 5. Repository Directory Layout
 Final project directory structure following standard Ansible best practices:
-![Repository Structure](assets/05_repository_structure.png)  
+![Repository Structure](images/05_repository_structure.png)  
 *Verification: Confirmed tree structure layout using `find` [cite: 41].*
 
 ---
