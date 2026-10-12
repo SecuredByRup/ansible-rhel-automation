@@ -1,11 +1,12 @@
-**Module 01: Playbook Architecture & Error Handling**
+### **Module 01: Playbook Architecture & Error Handling**
 
 **Overview**
+
 This module demonstrates the design, deployment, and verification of Ansible Playbooks on CentOS/RHEL nodes. It covers structured playbook organization, Jinja2 templating, handler management, variable scoping, and advanced error handling (`block`, `rescue`, `always`).
 
 ## Directory Structure
 ```plaintext
-.
+
 ├── enhanced-playbook.yml
 ├── error-handling-playbook.yml
 ├── files/
@@ -37,18 +38,27 @@ ansible_ssh_private_key_file=/home/ansible/.ssh/id_rsa
 ansible_ssh_common_args='-o StrictHostKeyChecking=no'
 ```
 
-**Connectivity Verification**
+## **Connectivity Verification**
+```ini
 ansible managed_nodes -m ping -i inventory.ini
+```
 
-**Playbook Executions & Outcomes**
-Web Infrastructure Deployment (`enhanced-playbook.yml`): Deploys httpd and firewalld, provisions dynamic index content using Jinja2 templates (`index.html.j2`), and reloads services using triggered handlers.
+![Successful Ping Test](./images/01-ping-test.png)
 
-Error Handling & Resilience (`error-handling-playbook.yml`): Tests playbook recovery against non-existent packages and services using ignore_errors alongside block/rescue/always logic.
+## **Playbook Executions & Outcomes**
 
-Externalized Variables (`variable-playbook.yml`): Demonstrates variable separation by loading external definitions (`vars.yml`) and conditionally assigning software setups based on host groups.
+**Web Infrastructure Deployment** (`enhanced-playbook.yml`): Deploys httpd and firewalld, provisions dynamic index content using Jinja2 templates (`index.html.j2`), and reloads services using triggered handlers.
 
-**Deployment Verification**
+**Error Handling & Resilience** (`error-handling-playbook.yml`): Tests playbook recovery against non-existent packages and services using ignore_errors alongside block/rescue/always logic.
+
+**Externalized Variables** (`variable-playbook.yml`): Demonstrates variable separation by loading external definitions (`vars.yml`) and conditionally assigning software setups based on host groups.
+
+## **Deployment Verification**
+
 Validating web server execution and Jinja2 dynamic template rendering via local HTTP requests:
 
-Bash
-curl [http://192.168.1.10](http://192.168.1.10)
+```Bash
+curl -I http://127.0.0.1
+```
+
+![Curl Verification](./images/04-curl-verification.png)
